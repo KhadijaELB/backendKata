@@ -1,6 +1,7 @@
 package com.kata.kataBackend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,11 +22,14 @@ public class PlayerController {
     private PlayerService playerService;
 	@PostMapping("/addPlayer")
     public ResponseEntity<PlayerDTO> createPlayer(@RequestBody PlayerDTO playerDto) {
-		return null;
-	}
-	 @GetMapping("/getPlayer/{id}")
-	    public PlayerDTO getPlayerById(@PathVariable(name = "id") Integer id) {
-	    	return null;
-	    }
+    	PlayerDTO player = playerService.addPlayer(playerDto);
+        return new ResponseEntity<>(player, HttpStatus.CREATED);
+        
+    }
+    @GetMapping("/getPlayer/{id}")
+    public PlayerDTO getPlayerById(@PathVariable(name = "id") Integer id) {
+    	PlayerDTO player = playerService.getPlayerById(id);
+        return player;
+    }
 
 }

@@ -19,7 +19,6 @@ public class PlayerControllerTest {
 	@Test
     public void testGetPlayerById() {
 		PlayerDTO player = testRestTemplate.getForObject("/api/v1/getPlayer/1", PlayerDTO.class);
-        // System.out.println(player.getPlayerName());
         assertNotNull(player.getPlayerName());
     }
 	@Test
