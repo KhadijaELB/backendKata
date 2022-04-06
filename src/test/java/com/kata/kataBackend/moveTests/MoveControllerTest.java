@@ -12,10 +12,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-
-import com.kata.kataBackend.DTO.GameDTO;
 import com.kata.kataBackend.DTO.MoveDTO;
-import com.kata.kataBackend.enums.GameStatus;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class MoveControllerTest {

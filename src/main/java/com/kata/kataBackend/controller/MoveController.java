@@ -23,15 +23,16 @@ public class MoveController {
 	@Autowired
 	private MoveService moveService;
 	   
-    @PostMapping("/addMove")
+	@PostMapping("/addMove")
     public ResponseEntity<MoveDTO> addMove(@RequestBody MoveDTO moveDto) {
-    	return null;
+    	MoveDTO move = moveService.addMove(moveDto);
+        return new ResponseEntity<>(move, HttpStatus.CREATED);
         
     }
     @GetMapping("/getListMove/{idGame}")
     public List<MoveDTO> getGames(@PathVariable(name = "idGame") Integer idGame) {
-    	
-    	 return null;
+    	List<MoveDTO> listMove = moveService.getMoves(idGame);
+        return listMove;
     }
 
 }
