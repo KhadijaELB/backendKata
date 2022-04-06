@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.kata.kataBackend.service.GameService;
 import com.kata.kataBackend.DTO.GameDTO;
+import com.kata.kataBackend.DTO.PlayerDTO;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -26,20 +27,24 @@ public class GameController {
 	
 	@PostMapping("/createGame")
     public ResponseEntity<GameDTO> createGame(@RequestBody GameDTO gameDto) {
-    	return null;
+    	GameDTO game = gameService.createGame(gameDto);
+        return new ResponseEntity<>(game, HttpStatus.CREATED);
        }
     @PutMapping("/updateGame/{id}")
     public ResponseEntity<GameDTO> updateGame(@PathVariable(name = "id") Integer id,@RequestBody GameDTO gameDto) {
-    	return null;
+    	GameDTO game = gameService.updateGame(id,gameDto);
+        return new ResponseEntity<>(game, HttpStatus.CREATED);
         
     }
     @GetMapping("/getListGame")
     public List<GameDTO> getGames() {
-    	return null;
+    	List<GameDTO> listGame = gameService.getGames();
+        return listGame;
     }
     @GetMapping("/getGame/{id}")
     public GameDTO getGameById(@PathVariable(name = "id") Integer id) {
-    	return null;
+    	GameDTO game = gameService.getPlayerById(id);
+        return game;
     }
 
 }

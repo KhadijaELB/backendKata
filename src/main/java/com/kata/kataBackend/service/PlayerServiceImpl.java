@@ -22,21 +22,21 @@ public class PlayerServiceImpl implements PlayerService{
         return mapEntityToDto(savedPlayer);
 	}
 	
-	private void mapDtoToEntity(PlayerDTO playerDto, Player player) {
-		player.setPlayerName(playerDto.getPlayerName());
-    	}
-	    
-	    private PlayerDTO mapEntityToDto( Player player) {
-	    	PlayerDTO responseDto = new PlayerDTO();
-	    	responseDto.setPlayerName(player.getPlayerName());
-	    	responseDto.setId(player.getId());
-	        return responseDto;
-	    }
-
-		@Override
+	    @Override
 		@Transactional
 		public PlayerDTO getPlayerById(Integer id) {
 			Player player = playerRepository.getOne(id);
 			return mapEntityToDto(player);
 		}
+	   
+		private void mapDtoToEntity(PlayerDTO playerDto, Player player) {
+			player.setPlayerName(playerDto.getPlayerName());
+	    	}
+		    
+		    private PlayerDTO mapEntityToDto( Player player) {
+		    	PlayerDTO responseDto = new PlayerDTO();
+		    	responseDto.setPlayerName(player.getPlayerName());
+		    	responseDto.setId(player.getId());
+		        return responseDto;
+		    }
 }
